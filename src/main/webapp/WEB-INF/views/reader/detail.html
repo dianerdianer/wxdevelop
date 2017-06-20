@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/default"
+      lang="en">
+<head>
+    <title>家庭图书管理系统-图书</title>
+</head>
+<body>
+<div layout:fragment="warpcontent">
+    <div class="readrecode">
+        <div class="margleft10 margright10 title">阅读记录</div>
+        <table class="paddl10" width="100%">
+            <thead>
+            <tr>
+                <td>编号</td>
+                <td>图书名称</td>
+                <td>借阅者名称</td>
+                <td>阅读时间</td>
+                <td>陈列时间</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="borrow : ${borrowList}">
+                <td th:text="${borrow.id}">20170424001</td>
+                <td th:text="${borrow.bookName}">九阳神功</td>
+                <td th:text="${borrow.readerName}">邢海龙</td>
+                <td th:text="${borrow.borrowDateDesc}">2017-4-24 12:46</td>
+                <td th:text="${borrow.backDateDesc}">2017-4-30 12:46</td>
+                <!--<td th:text="${#calendars.format(borrow.borrowDate,'yyyy-MM-dd')}">2017-4-24 12:46</td>-->
+                <!--<td th:text="${#calendars.format(borrow.backDate,'yyyy-MM-dd')}">2017-4-30 12:46</td>-->
+            </tr>
+            </tbody>
+        </table>
+        <a id="btnclose" class="button fl paddb10 btnclose gray" th:href="@{/reader/list}" href="/reader/list" >取消</a>
+        <!--<input type="button" value="关闭" class="button fl paddb10 btnclose gray" onclick="window.history.back();location.reload();" />-->
+        <div class="clear"></div>
+    </div>
+</div>
+</body>
+</html>

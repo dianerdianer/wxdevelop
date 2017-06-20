@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/default"
+      lang="en">
+<head>
+    <title>家庭图书管理系统-图书</title>
+</head>
+<body>
+<div layout:fragment="warpcontent">
+    <div class="margleft10 title">成员</div>
+    <a class="button" id="addmember" th:href="@{/reader/toEdit}" href="">添加成员</a>
+    <table class="paddl10" width="100%">
+        <thead>
+        <tr>
+            <td>编号</td>
+            <td>身份</td>
+            <td>姓名</td>
+            <td>手机号</td>
+            <td>创建时间</td>
+            <td>操作</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="reader :${readerList.list}">
+            <td th:text="${readerStat.count}">1</td>
+            <td th:text="${reader.readerIdentity}">2</td>
+            <td th:text="${reader.readerName}">3</td>
+            <td th:text="${reader.readerPhone}">4</td>
+            <td th:text="${reader.readerAddTimeDesc}">5</td>
+            <!--<td th:text="${#calendars.format(reader.readerAddTime,'yyyy-MM-dd ')}">5</td>-->
+            <td><span class="edit"  ><a th:href="@{/reader/toEdit(readerNum=${reader.readerNum})}">编辑</a></span>/<span class="recode"><a th:href="@{/reader/detail(readerNum=${reader.readerNum})}">记录</a></span></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

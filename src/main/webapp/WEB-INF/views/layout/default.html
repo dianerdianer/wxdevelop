@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title layout:title-pattern="$CONTENT_TITLE - $DECORATOR_TITLE">家庭图书管理系统-图书</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}" href="css/common.css">
+    <link rel="stylesheet" th:href="@{/css/layer.css}" href="css/layer.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="css/style.css"/>
+</head>
+<body>
+    <!--公用头部-->
+
+    <!--定义了一个主体部分,在其他文件中,在对应的section中写入内容就相当于引入了本模板-->
+    <div class="warp">
+        <div class="header">
+            <span class="welcome">欢迎回家</span><span class="admin">当前成员：<span th:text="${#httpSession.getAttribute('user').readerName}">邢海龙</span></span>
+        </div>
+        <div class="menu fl">
+            <ul>
+                <li th:class="${#httpServletRequest.getAttribute('modelname') == '/'} ? 'cur'" ><a th:href="@{/}" href="../main.html" target="_self">概况</a></li>
+                <li th:class="${#httpServletRequest.getAttribute('modelname') == 'book'} ? 'cur'"><a th:href="@{/book/list}" href="../books.html" target="_self">图书</a></li>
+                <li th:class="${#httpServletRequest.getAttribute('modelname') == 'reader'} ? 'cur'"><a th:href="@{/reader/list}" href="../members.html" target="_self">成员</a></li>
+            </ul>
+        </div>
+
+        <div class="content" layout:fragment="warpcontent">page main content</div>
+    </div>
+
+    <!--公用底部-->
+    <div th:replace="fragments/footer :: footersource"></div>
+
+</body>
+</html>

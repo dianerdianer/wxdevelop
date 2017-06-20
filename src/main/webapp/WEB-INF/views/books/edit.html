@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/default"
+      lang="en">
+<head>
+    <title>家庭图书管理系统-图书</title>
+</head>
+<body>
+<div layout:fragment="warpcontent">
+    <div class="addbook">
+        <form id="form1" th:action="@{/book/edit}" action="book/edit">
+            <input type="hidden" name="bookNum" th:value="${book.bookNum}?${book.bookNum}:''">
+            <div class="margleft10 margright10 title">图书编辑</div>
+            <div class="fl portrait">
+                <img id="bookCoverImg" th:src="${book.bookCover}?${book.bookCover}:''" src="images/book.jpg" alt="" width="100%" height="100%">
+            </div>
+            <div class="fr info">
+                <p><span>图书名称：</span><input type="text" maxlength="20" id="bookname" name="bookName" th:value="${book.bookName}?${book.bookName}:''" /></p>
+                <p><span>类型：</span>
+                    <select name="bookType">
+                        <!--<option selected="selected" >实体</option>-->
+                        <option th:selected="${book.bookType} == 0" value="0">实体</option>
+                        <option th:selected="${book.bookType} == 1" value="1">电子</option>
+                    </select>
+                </p>
+                <p><span>ISBN：</span><input type="text" maxlength="20" id="bookIsbn" name="bookIsbn"  th:value="${book.bookIsbn}?${book.bookIsbn}:''"/></p>
+                <p><span>作者：</span><input type="text" maxlength="20" id="bookAuthor" name="bookAuthor" th:value="${book.bookAuthor}?${book.bookAuthor}:''"/></p>
+                <p><span>出版社：</span><input type="text" maxlength="20" id="bookPress" name="bookPress" th:value="${book.bookPress}?${book.bookPress}:''"/></p>
+                <p><span>价格：</span><input type="text" maxlength="10" id="bookPrice" name="bookPrice" th:value="${book.bookPrice}?${book.bookPrice}:''"  onkeyup="clearNoNum(this)"/></p>
+                <p><span>购买人：</span><input type="text" maxlength="12" id="bookPurchaser" name="bookPurchaser" th:value="${book.bookPurchaser}?${book.bookPurchaser}:''"/></p>
+                <p><span>封面链接：</span><input type="text" maxlength="256" id="bookCover" name="bookCover" th:value="${book.bookCover}?${book.bookCover}:''"/></p>
+            </div>
+            <div class="clear"></div>
+            <!--<p class="margleft10">-->
+                <!--<input type="file"/>(文件不大于2MB)-->
+            <!--</p>-->
+            <p class="margleft10 ptest">图书简介</p>
+            <textarea name="bookIntroduction" id="bookIntroduction" cols="57" rows="8" class="margleft10 margright10" maxlength="100" th:text="${book.bookIntroduction}"></textarea>
+            <div class="clear"></div>
+            <span th:text="${errorMsg}" style="color: red;"></span>
+            <input type="button" class="button fl paddb10 addbookok" value="确定"/>
+            <input type="button" value="取消" class="button fl paddb10 gray" onclick="window.history.back();location.reload();" />
+        </form>
+        <div class="clear"></div>
+    </div>
+</div>
+
+</body>
+</html>

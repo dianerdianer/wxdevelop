@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/default"
+      lang="en">
+<head>
+    <title>家庭图书管理系统-图书</title>
+</head>
+<body>
+<div layout:fragment="warpcontent">
+    <div class="margleft10 title">图书</div>
+    <!--<button class="button" id="addbook">添加图书</button>-->
+    <a class="button" id="addbook" th:href="@{/book/toEdit}">添加图书</a>
+    <p class="margleft10 line40">
+        <form id="form1" th:action="@{/book/list}" action="book/list">
+            图书类型：
+            <select name="bookType">
+                <option id="alltype" th:selected="${query.bookType} == -1"  selected="selected" value="-1">全部</option>
+                <option id="entity" th:selected="${query.bookType} == 0"  value="0">实体</option>
+                <option id="electronic" th:selected="${query.bookType} == 1"  value="1">电子</option>
+            </select>
+            借阅状态：
+            <select name="bookBorrowState">
+                <option id="allstatus" th:selected="${query.bookBorrowState} == -1" selected="selected" value="-1">全部</option>
+                <option id="reback" th:selected="${query.bookBorrowState} == 0" value="0">已陈列</option>
+                <option id="reading" th:selected="${query.bookBorrowState} == 1" value="1">阅读中</option>
+            </select>
+            图书名称：<input type="text" name="bookName" th:value="${query.bookName}?${query.bookName}:''"  maxlength="20"/>
+            <button id="search" onclick="document.getElementById('form1').submit();">搜 索</button>
+        </form>
+    </p>
+    <table class="paddl10" width="100%">
+        <thead>
+        <tr>
+            <td>标号</td>
+            <td>类型</td>
+            <td>借阅状态</td>
+            <td>作者</td>
+            <td>名称</td>
+            <td>ISBN</td>
+            <td>出版社</td>
+            <td>价格</td>
+            <td>购买人</td>
+            <td>创建时间</td>
+            <td>操作</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="book : ${pageResult.list}" >
+            <td th:text="${bookStat.count}">1</td>
+            <td th:text="${book.bookType}">2</td>
+            <td th:text="${book.bookBorrowState}">3</td>
+            <td th:text="${book.bookAuthor}">4</td>
+            <td class="bookcontent"><a th:text="${book.bookName}" th:href="@{/book/detail(bookNum=${book.bookNum})}" >一本特别好的书</a></td>
+            <td th:text="${book.bookIsbn}">6</td>
+            <td th:text="${book.bookPress}">7</td>
+            <td th:text="${book.bookPrice}">8</td>
+            <td th:text="${book.bookPurchaser}">9</td>
+            <td th:text="${book.bookAddTimeDesc}">19</td>
+            <!--<td th:text="${#calendars.format(book.bookAddTime,'yyyy-MM-dd ')}">19</td>-->
+            <!--<td th:text="${book.bookAddTime}">19</td>-->
+            <td><a th:href="@{/book/toEdit(bookNum=${book.bookNum})}">编辑</a></td>
+        </tr>
+        </tbody>
+    </table>
+        <!--<div class="footer">Copyright © 2017 By 8th Allrights Reserved.</div>-->
+    <!--<div class="footer"></div>-->
+</div>
+
+</body>
+</html>

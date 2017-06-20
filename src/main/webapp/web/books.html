@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>家庭图书管理系统-图书</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/layer.css">
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div class="warp">
+    <div class="header">
+        <span class="welcome">欢迎回家</span><span class="admin">当前成员：邢海龙</span>
+    </div>
+    <div class="menu fl">
+        <ul>
+            <li><a href="main.html" target="_self">概况</a></li>
+            <li class="cur"><a href="books.html" target="_self">图书</a></li>
+            <li><a href="members.html" target="_self">成员</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="margleft10 title">图书</div>
+        <button class="button" id="addbook">添加图书</button>
+        <p class="margleft10 line40">
+            图书类型：
+            <select>
+                <option id="all" selected="selected">全部</option>
+                <option id="computer">计算机</option>
+                <option id="contristions">建筑工程</option>
+                <option id="article">艺术学</option>
+            </select>
+            借阅状态：
+            <select>
+                <option id="reading" selected="selected">阅读中</option>
+                <option id="reback">已成列</option>
+            </select>
+            图书名称：<input type="text" value="java入门到精通"/>
+            <button id="search">搜 索</button>
+        </p>
+        <table class="paddl10" width="100%">
+            <thead>
+            <tr>
+                <td>标号</td>
+                <td>类型</td>
+                <td>借阅状态</td>
+                <td>作者</td>
+                <td>名称</td>
+                <td>ISBN</td>
+                <td>出版社</td>
+                <td>价格</td>
+                <td>创建时间</td>
+                <td>购买人</td>
+                <td>操作</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td class="bookcontent">一本特别好的书</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>19</td>
+                <td>11</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td class="bookcontent">php高级编程</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>19</td>
+                <td>11</td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="footer">Copyright © 2017 By 8th Allrights Reserved.</div>
+    </div>
+    <div class="footer"></div>
+</div>
+<div id="bg"></div>
+<div class="dialog addbook">
+    <div class="margleft10 margright10 title">图书编辑</div>
+    <div class="fl portrait">
+        <img src="images/book.jpg" alt="" width="100%" height="100%">
+    </div>
+    <div class="fr info">
+        <p><span>图书名称：</span><input type="text" maxlength="20" id="bookname"/></p>
+        <p><span>类型：</span>
+            <select>
+            <option selected="selected">实体</option>
+            <option>电子</option>
+            </select>
+        </p>
+        <p><span>ISBN：</span><input type="text" maxlength="20" id="bookisbn"/></p>
+        <p><span>作者：</span><input type="text" maxlength="20" id="bookanthor"/></p>
+        <p><span>出版社：</span><input type="text" maxlength="20" id="bookpress"/></p>
+        <p><span>价格：</span><input type="text" maxlength="6" id="bookpride"/></p>
+        <p><span>购买人：</span><input type="text" maxlength="12" id="bookpurchaser"/></p>
+        <p><span>添加时间：</span><input type="text" maxlength="20" id="bookaddtime"/></p>
+    </div>
+    <div class="clear"></div>
+    <p class="margleft10">
+        <input type="file"/>(文件不大于2MB)
+    </p>
+    <p class="margleft10 ptest">图书简介</p>
+    <textarea name="" id="" cols="57" rows="8" class="margleft10 margright10" maxlength="100"></textarea>
+    <div class="clear"></div>
+    <input type="button" class="button fl paddb10 addbookok" value="确定" />
+    <input type="button" value="取消" class="button fl paddb10 gray" onclick="hidelayer();" />
+    <div class="clear"></div>
+</div>
+<div class="dialog bookdetails">
+    <div class="margleft10 margright10 title">图书详情</div>
+    <div class="fl portrait">
+        <img src="images/book.jpg" alt="" width="100%" height="100%">
+    </div>
+    <div class="fr info">
+        <p>图书名称：<span>java从入门到精通</span></p>
+        <p>类型：<span>计算机</span></p>
+        <p>ISBN：<span>ISBN-20170425001</span></p>
+        <p>作者：<span>邢海龙</span></p>
+        <p>出版社：<span>清华大学出版社</span></p>
+        <p>价格：<span>23.00元</span></p>
+        <p>购买人：<span>邢海龙</span></p>
+        <p>添加时间：<span>2017-4-24 12:34</span></p>
+    </div>
+    <div class="clear"></div>
+    <p class="margleft10 margright10"><b>图书简介</b><br><span>Java是一门面向对象编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念，因此Java语言具有功能强大和简单易用两个特征。Java语言作为静态面向对象编程语言的代表，极好地实现了面向对象理论，允许程序员以优雅的思维方式进行复杂的编程[1]  。</span></p>
+    <p class="margleft10"><b>借阅历史</b></p>
+    <table class="tables" width="100%">
+        <thead>
+        <tr>
+            <td>编号</td>
+            <td>借阅人</td>
+            <td>借阅时间</td>
+            <td>归还时间</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>20170424001</td>
+            <td>邢海龙</td>
+            <td>2017-4-24 12:46</td>
+            <td>2017-4-30 12:46</td>
+        </tr>
+        </tbody>
+    </table>
+    <input type="button" class="button fl paddb10" value="借阅归还" />
+    <input type="button" value="取消" class="button fl paddb10 gray" onclick="hidelayer();" />
+    <div class="clear"></div>
+</div>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+</body>
+</html>

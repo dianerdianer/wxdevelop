@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+    <div th:fragment="headsource">
+        <div class="header">
+            <span class="welcome">欢迎回家</span><span class="admin">当前成员：邢海龙</span>
+        </div>
+        <div class="menu fl">
+            <ul>
+                <li class="cur"><a th:href="@{/}" href="../main.html" target="_self">概况</a></li>
+                <li><a th:href="@{/book/list}" href="../books.html" target="_self">图书</a></li>
+                <li><a th:href="@{/reader/list}" href="../members.html" target="_self">成员</a></li>
+            </ul>
+        </div>
+
+
+    </div>
+</body>
+</html>

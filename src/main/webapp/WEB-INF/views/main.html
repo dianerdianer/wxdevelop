@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"
+       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/default"
+      lang="en">
+<head>
+    <title>家庭图书管理系统-概况</title>
+</head>
+<body>
+<div layout:fragment="warpcontent">
+    <div class="margleft10 title">概况</div>
+    <div class="margleft10 titlecon">
+        <p>图书总量：<span th:text = "${info.totalBooks}">10000</span></p>
+        <p>图书总价：<span th:text = "${info.totalPrice}">20000</span></p>
+        <p>借阅次数：<span th:text = "${info.borrowCount}">200</span></p>
+        <p>成员数量：<span th:text = "${info.readerCount}">4</span></p>
+    </div>
+    <div class="margleft10 title">图书详情</div>
+    <div class="book_details">
+        <div class="new_book fl">
+            <div class="margleft20 title noborder">新上架</div>
+            <!--循环展示数据-->
+            <div class="introduce" th:each="item:${newBooks}">
+                <div class="introduce_l">
+                    <a th:href="@{/book/detail(bookNum=${item.bookNum})}" >
+                        <img th:src="${item.bookCover}?${item.bookCover} :''" src="images/book.jpg" width="100%" height="100%">
+                    </a>
+                </div>
+                <div class="introduce_r">
+                    <a th:href="@{/book/detail(bookNum=${item.bookNum})}" ><h3 th:text="${item.bookName}">java从入门到精通</h3> </a>
+                    <p th:text="${item.bookIntroduction}">Java是一门面向对象编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念，因此Java语言具有功能强大和简单易用两个特征。</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="reading fr">
+            <div class="margleft20 title noborder">阅读中</div>
+            <!--循环遍历数据-->
+            <div class="introduce" th:each="item:${borrowBooks}">
+                <div class="introduce_l">
+                    <a th:href="@{/book/detail(bookNum=${item.bookNum})}" >
+                        <img th:src="${item.bookCover}?${item.bookCover} :''" src="images/book.jpg" width="100%" height="100%">
+                    </a>
+                </div>
+                <div class="introduce_r">
+                    <a th:href="@{/book/detail(bookNum=${item.bookNum})}" ><h3  th:text="${item.bookName}">java从入门到精通</h3></a>
+                    <span th:text="'阅读:'+${item.readerName}">阅读:邢海龙</span>
+                    <p th:text="'借阅时间：'+${item.borrowDateDesc}" class="rreading" >借阅时间：2017-4-23 22:01</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

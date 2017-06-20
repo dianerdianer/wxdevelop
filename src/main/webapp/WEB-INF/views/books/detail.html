@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/default"
+      lang="en">
+<head>
+    <title>家庭图书管理系统-图书</title>
+</head>
+<body>
+<div layout:fragment="warpcontent">
+    <div class=" bookdetails">
+        <div class="margleft10 margright10 title">图书详情</div>
+        <div class="fl portrait">
+            <img th:src="${book.bookCover}?${book.bookCover}:''" src="../images/book.jpg" alt="" width="100%" height="100%">
+        </div>
+        <div class="fr info" style="float:left;">
+            <p>图书名称：<span th:text="${book.bookName}">java从入门到精通</span></p>
+            <p>类型：<span th:text="${book.bookType}">计算机</span></p>
+            <p>ISBN：<span th:text="${book.bookIsbn}">ISBN-20170425001</span></p>
+            <p>作者：<span th:text="${book.bookAuthor}">邢海龙</span></p>
+            <p>出版社：<span th:text="${book.bookPress}">清华大学出版社</span></p>
+            <p>价格：<span th:text="${book.bookPrice}">23.00元</span></p>
+            <p>购买人：<span th:text="${book.bookPurchaser}">邢海龙</span></p>
+            <p>添加时间：<span th:text="${book.bookAddTimeDesc}">2017-4-24 12:34</span></p>
+            <!--<p>添加时间：<span th:text="${#calendars.format(book.bookAddTime,'yyyy-MM-dd ')}">2017-4-24 12:34</span></p>-->
+        </div>
+        <div class="clear"></div>
+        <p class="margleft10 margright10">
+            <b>图书简介</b>
+            <br>
+            <span th:text="${book.bookIntroduction}">Java是一门面向对象编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念，因此Java语言具有功能强大和简单易用两个特征。Java语言作为静态面向对象编程语言的代表，极好地实现了面向对象理论，允许程序员以优雅的思维方式进行复杂的编程[1]  。</span></p>
+        <div>
+            <p class="margleft10"><b>借阅历史</b></p>
+            <table class="tables" width="100%">
+                <thead>
+                <tr>
+                    <td>编号</td>
+                    <td>借阅人</td>
+                    <td>借阅时间</td>
+                    <td>归还时间</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="borrow : ${borrowList}">
+                    <td th:text="${borrow.bookNum}">20170424001</td>
+                    <td th:text="${borrow.readerName}">邢海龙</td>
+                    <td th:text="${borrow.borrowDateDesc}">2017-4-24 12:46</td>
+                    <td th:text="${borrow.backDateDesc}">2017-4-30 12:46</td>
+                    <!--<td th:text="${#calendars.format(borrow.borrowDate,'yyyy-MM-dd')}">2017-4-24 12:46</td>-->
+                    <!--<td th:text="${#calendars.format(borrow.backDate,'yyyy-MM-dd')}">2017-4-30 12:46</td>-->
+                </tr>
+                </tbody>
+            </table>
+            <form id="form1" th:action="@{/borrow/back}" action="/borrow/back">
+                <span th:text="${errorMsg}" style="color: red;"></span>
+                <input type="hidden" name="bookNum" th:value="${book.bookNum}">
+                <input type="button" class="button fl paddb10" value="借阅归还" onclick="document.getElementById('form1').submit();"/>
+            </form>
+            <a class="button fl paddb10 gray" th:href="@{/book/list}" href="/book/list" >取消</a>
+            <!--<input type="button" value="取消" class="button fl paddb10 gray" onclick="window.history.back();location.reload();" />-->
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>家庭图书管理系统-成员</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/layer.css">
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div class="warp">
+    <div class="header">
+        <span class="welcome">欢迎回家</span><span class="admin">当前成员：邢海龙</span>
+    </div>
+    <div class="menu fl">
+        <ul>
+            <li><a href="main.html" target="_self">概况</a></li>
+            <li><a href="books.html" target="_self">图书</a></li>
+            <li class="cur"><a href="members.html" target="_self">成员</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="margleft10 title">成员</div>
+        <button class="button" id="addmember">添加成员</button>
+        <table class="paddl10" width="100%">
+            <thead>
+            <tr>
+                <td>编号</td>
+                <td>身份</td>
+                <td>姓名</td>
+                <td>手机号</td>
+                <td>创建时间</td>
+                <td>操作</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td><span class="edit">编辑</span>/<span class="recode">记录</span></td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td><span class="edit">编辑</span>/<span class="recode">记录</span></td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="footer">Copyright © 2017 By 8th Allrights Reserved.</div>
+    </div>
+    <div class="footer"></div>
+</div>
+<div id="bg"></div>
+<!--添加成员-->
+<div class="dialog addmember">
+    <div class="margleft10 margright10 title">成员编辑</div>
+    <div class="margleft10 id_info">
+        <p><span>身份：</span><input type="text" id="identity"></p>
+        <p><span>姓名：</span><input type="text" id="name"></p>
+        <p><span>手机号：</span><input type="text" id="phone"></p>
+    </div>
+    <input id="addrecodeok"type="button" class="button fl paddb10" value="确定" />
+    <input id="btnclose" type="button" value="取消" class="button fl paddb10 gray" onclick="hidelayer();" />
+    <div class="clear"></div>
+</div>
+<!--阅读记录-->
+<div class="dialog readrecode">
+    <div class="margleft10 margright10 title">阅读记录</div>
+    <table class="paddl10" width="100%">
+        <thead>
+        <tr>
+            <td>编号</td>
+            <td>图书名称</td>
+            <td>阅读时间</td>
+            <td>陈列时间</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>20170424</td>
+            <td>java从入门到精通</td>
+            <td>2017-4-24</td>
+            <td>2017-4-24</td>
+        </tr>
+        <tr>
+            <td>20170424</td>
+            <td>java从入门到精通</td>
+            <td>2017-4-24</td>
+            <td>2017-4-24</td>
+        </tr>
+        <tr>
+            <td>20170424</td>
+            <td>java从入门到精通</td>
+            <td>2017-4-24</td>
+            <td>2017-4-24</td>
+        </tr>
+        <tr>
+            <td>20170424</td>
+            <td>java从入门到精通</td>
+            <td>2017-4-24</td>
+            <td>2017-4-24</td>
+        </tr>
+        <tr>
+            <td>20170424</td>
+            <td>java从入门到精通</td>
+            <td>2017-4-24</td>
+            <td>2017-4-24</td>
+        </tr>
+        </tbody>
+    </table>
+    <input type="button" value="关闭" class="button fl paddb10 btnclose gray" onclick="hidelayer();" />
+    <div class="clear"></div>
+</div>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+</body>
+</html>

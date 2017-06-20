@@ -1,0 +1,21 @@
+#bg{display: none; position: absolute; top: 0%; left: 0%; width: 100%; height: 100%; background-color: black;  z-index:1001; -moz-opacity: 0.7; opacity:.70; filter: alpha(opacity=70); }
+.dialog{display: none; position: absolute; top: 23%; left: 40%; z-index:1002; overflow: auto; width: 400px; background-color: #eee; margin: 10px auto; font-size: 12px; }
+.portrait, .info{width: 190px; }
+.portrait img{width:170px; height: 170px; margin: 10px 0px 10px 10px; }
+.info{margin: 10px 10px 10px 0; }
+.margright10{margin-right: 10px; }
+.tables{padding:0 10px 0px 10px; }
+.paddb10{margin-bottom: 10px; }
+
+/*添加图书*/
+.addbook{width: 500px;}
+.addbook .info{width: 290px; }
+.addbook .info p{margin:5px auto; }
+.addbook .info select{width: 140px; }
+.addbook .info span{display: inline-block; width: 80px; }
+.addbook .ptest{font-size: 16px; line-height: 32px; }
+
+/*添加成员*/
+.addmember{width: 250px;}
+.addmember .id_info p{margin:5px auto; }
+.addmember .id_info span{display: inline-block; width: 50px; }
