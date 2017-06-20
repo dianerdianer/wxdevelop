@@ -39,8 +39,8 @@ public class WxTokenController {
      * @return
      */
     @RequestMapping("/token")
-    @ResponseBody
-    public String accessToken(HttpServletRequest request, HttpServletResponse response, @ModelAttribute WxTokenAuthForm form, HttpSession session, BindingResult br) throws ValidationException {
+//    @ResponseBody
+    public Boolean accessToken(HttpServletRequest request, HttpServletResponse response, @ModelAttribute WxTokenAuthForm form, HttpSession session, BindingResult br) throws ValidationException {
         System.out.println(form);
         System.out.println(form.getSignature());
         System.out.println(form.getTimestamp());
@@ -69,7 +69,8 @@ public class WxTokenController {
 
         content = null;
         // 将 sha1 加密后的字符串可与 signature 对比，标识该请求来源于微信
-        return Result.success(tmpStr != null ? tmpStr.equals(form.getSignature().toUpperCase()) : false);
+        return tmpStr != null ? tmpStr.equals(form.getSignature().toUpperCase()) : false;
+//        return Result.success(tmpStr != null ? tmpStr.equals(form.getSignature().toUpperCase()) : false);
     }
 
 
