@@ -14,7 +14,7 @@ public class WxTokenAuthForm {
     @NotNull
     private Long timestamp;
     @NotNull
-    private Integer nonce;
+    private String nonce;
     @NotBlank
     private String echostr;
 
@@ -36,11 +36,11 @@ public class WxTokenAuthForm {
         this.timestamp = timestamp;
     }
 
-    public Integer getNonce() {
+    public String getNonce() {
         return nonce;
     }
 
-    public void setNonce(Integer nonce) {
+    public void setNonce(String nonce) {
         this.nonce = nonce;
     }
 

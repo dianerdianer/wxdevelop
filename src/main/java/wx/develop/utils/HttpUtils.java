@@ -67,17 +67,17 @@ public class HttpUtils {
     /**
      * 默认编码为UTF8
      */
-    private static Charset UTF8 = Charset.forName("UTF-8");
+    public static Charset UTF8 = Charset.forName("UTF-8");
 
     /**
      * GBK编码
      */
-    private static Charset GBK = Charset.forName("GBK");
+    public static Charset GBK = Charset.forName("GBK");
 
     /**
      * ISO8859-1编码
      */
-    private static Charset ISO8859_1 = Charset.forName("ISO8859-1");
+    public static Charset ISO8859_1 = Charset.forName("ISO8859-1");
 
     /**
      * SSL 连接上下文
