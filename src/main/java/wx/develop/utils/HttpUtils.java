@@ -403,7 +403,7 @@ public class HttpUtils {
      * @param requestParam get请求参数
      * @return 完整请求url
      */
-    private static String getMethodParamHandle(String url, Map<String, Object> requestParam, Charset charset) {
+    public static String getMethodParamHandle(String url, Map<String, Object> requestParam, Charset charset) {
         // 断言请求参数不为空
         Assert.notNull(requestParam, "request param is null");
         Set<Map.Entry<String, Object>> entries = requestParam.entrySet();

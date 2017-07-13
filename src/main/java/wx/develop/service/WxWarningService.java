@@ -11,7 +11,7 @@ import wx.develop.utils.RedisUtils;
  * 微信报警相关数据获取
  * Created by lzh on 2017/7/11.
  */
-@Service("wxAuthInofService")
+@Service("wxWarningService")
 public class WxWarningService {
 
     private static Logger logger =  LoggerFactory.getLogger(WxWarningService.class);
@@ -23,7 +23,7 @@ public class WxWarningService {
     private RedisUtils redisUtils;
 
     @Autowired
-    private WxAuthService wxAuthInofService;
+    private WxAuthService wxAuthService;
 
     /**
      *

@@ -16,6 +16,7 @@ public class ConfigProperties {
     private String encodingAESKey;
     private String accessToken;
     private String refreshToken;
+    private String projectDomain;
 
     public String getAppId() {
         return appId;
@@ -63,5 +64,13 @@ public class ConfigProperties {
 
     public void setRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
+    }
+
+    public String getProjectDomain() {
+        return projectDomain;
+    }
+
+    public void setProjectDomain(String projectDomain) {
+        this.projectDomain = projectDomain;
     }
 }
