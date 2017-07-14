@@ -3,10 +3,7 @@ package wx.develop.controller.auth;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import wx.develop.base.Result;
 import wx.develop.base.ValidationUtils;
 import wx.develop.exception.ValidationException;
@@ -66,16 +63,23 @@ public class WxAuthController {
     }
 
     /**
-     * 跳转授权页面
+     * 跳转授权页面(静默)
      * @return
      */
-    @RequestMapping(value = "/to/oauth",method = RequestMethod.GET)
-//    @ResponseBody
-
-    public String toOauth(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws ValidationException, IOException {
-        String redirectRequestUrl = wxAuthService.toOauth(response);
+    @RequestMapping(value = "/to/oauth/snsapiBase",method = RequestMethod.GET)
+    public String toOauthSnsapiBase(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws ValidationException, IOException {
+        String redirectRequestUrl = wxAuthService.toOauth(response,null);
         return "redirect:" + redirectRequestUrl;
-//        return Result.success(true);
+    }
+
+    /**
+     * 跳转授权页面(非静默)
+     * @return
+     */
+    @RequestMapping(value = "/to/oauth/snsapiUserinfo",method = RequestMethod.GET)
+    public String toOauthSnsapiUserinfo(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws ValidationException, IOException {
+        String redirectRequestUrl = wxAuthService.toOauth(response,1);
+        return "redirect:" + redirectRequestUrl;
     }
 
     /**
@@ -86,5 +90,16 @@ public class WxAuthController {
     @ResponseBody
     public String processOauth(HttpServletRequest request, HttpServletResponse response, HttpSession session, @ModelAttribute WxAuthTmpForm form,  BindingResult br) throws ValidationException, IOException {
         return Result.success(wxAuthService.processOauth(form.getCode(),form.getState()));
+    }
+
+    /**
+     * 刷新用户缓存
+     * @return
+     */
+    @RequestMapping(value = "/refresh/user/accessToken")
+    @ResponseBody
+    public String refreshUserAccessToken(HttpServletRequest request, HttpServletResponse response, HttpSession session, @ModelAttribute WxAuthTmpForm form,  BindingResult br) throws ValidationException, IOException {
+        wxAuthService.refreshUserAccessToken();
+        return Result.success(true);
     }
 }

@@ -158,12 +158,18 @@ public class WxAuthService {
      * 跳转到授权页面
      * 官方文档:https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140842
      */
-    public String toOauth(HttpServletResponse response) throws IOException {
+    public String toOauth(HttpServletResponse response,Integer type) throws IOException {
         //用户认证授权页面
         String authorize_uri = "https://open.weixin.qq.com/connect/oauth2/authorize";
 
         String calbackUrl= configProperties.getProjectDomain()+"/process/oauth";
-        boolean snsapiBase = true;//是否静默授权(true 是),静默授权只能获取openId
+        //是否静默授权(true 是),静默授权只能获取openId
+        boolean snsapiBase;
+        if(type == null){
+            snsapiBase = true;
+        }else{
+            snsapiBase = false;
+        }
         String state = "STATE";//???
 
         //TODO 微信对重定向请求时url后的的参数顺序有要求,这里使用TreeMap,保证组装url参数时,按照key的自然顺序拼接
